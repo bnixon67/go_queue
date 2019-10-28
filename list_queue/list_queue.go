@@ -3,6 +3,7 @@ package list_queue
 
 import (
 	"errors"
+	"fmt"
 )
 
 type Node struct {
@@ -65,4 +66,16 @@ func (q *Queue) Peek() (element interface{}, err error) {
 
 	element = q.first.value
 	return element, nil
+}
+
+func (q Queue) String() string {
+	var values []interface{}
+
+	node := q.first
+	for node != nil {
+		values = append(values, node.value)
+		node = node.next
+	}
+
+	return fmt.Sprintf("size = %d values = %v", q.size, values)
 }
