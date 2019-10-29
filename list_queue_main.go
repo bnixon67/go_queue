@@ -8,7 +8,7 @@ import (
 
 func main() {
 	fmt.Println("*** create queue")
-	q := list_queue.NewQueue()
+	q := list_queue.New()
 	fmt.Println(q)
 	fmt.Println()
 

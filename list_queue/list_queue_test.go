@@ -14,7 +14,7 @@ func TestEnqueueDequeue(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		q := list_queue.NewQueue()
+		q := list_queue.New()
 		for i, element := range test.data {
 			q.Enqueue(element)
 			if i+1 != q.Size() {
@@ -37,7 +37,7 @@ func TestEnqueueDequeue(t *testing.T) {
 }
 
 func TestDequeueEmpty(t *testing.T) {
-	q := list_queue.NewQueue()
+	q := list_queue.New()
 	removedItem, err := q.Dequeue()
 	if err == nil {
 		t.Errorf("error: dequeuing from empty queue")
