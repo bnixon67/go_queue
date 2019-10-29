@@ -17,8 +17,8 @@ type Queue struct {
 	size  int
 }
 
-func NewQueue() Queue {
-	return Queue{first: nil, last: nil, size: 0}
+func NewQueue() *Queue {
+	return &Queue{first: nil, last: nil, size: 0}
 }
 
 func (q *Queue) IsEmpty() bool {

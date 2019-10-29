@@ -9,8 +9,8 @@ type Queue struct {
 	array []interface{}
 }
 
-func NewQueue() Queue {
-	return Queue{array: make([]interface{}, 0)}
+func NewQueue() *Queue {
+	return &Queue{array: make([]interface{}, 0)}
 }
 
 func (q *Queue) IsEmpty() bool {
