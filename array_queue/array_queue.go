@@ -3,6 +3,7 @@ package array_queue
 
 import (
 	"errors"
+	"fmt"
 )
 
 type Queue struct {
@@ -43,4 +44,8 @@ func (q *Queue) Peek() (element interface{}, err error) {
 
 	element = q.array[0]
 	return element, nil
+}
+
+func (q Queue) String() string {
+	return fmt.Sprintf("size = %d values = %v", q.Size(), q.array)
 }
