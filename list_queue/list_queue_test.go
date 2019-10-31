@@ -46,3 +46,59 @@ func TestDequeueEmpty(t *testing.T) {
 		t.Errorf("removedItem is not zero valued")
 	}
 }
+
+func TestIsEmpty(t *testing.T) {
+	q := list_queue.New()
+	if !q.IsEmpty() {
+		t.Errorf("error: queue should be Empty")
+	}
+
+	for n := 0; n < 3; n++ {
+		q.Enqueue(n)
+		if q.IsEmpty() {
+			t.Errorf("error: queue should not Empty")
+		}
+	}
+
+	for n := 0; n < 3; n++ {
+		if q.IsEmpty() {
+			t.Errorf("error: queue should not Empty")
+		}
+		q.Dequeue()
+	}
+
+	if !q.IsEmpty() {
+		t.Errorf("error: queue should be Empty")
+	}
+
+}
+
+func TestPeek(t *testing.T) {
+	q := list_queue.New()
+
+	for n := 0; n < 3; n++ {
+		q.Enqueue(n)
+	}
+
+	for n := 0; n < 3; n++ {
+		element, _ := q.Peek()
+		if element != n {
+			t.Errorf("Peek error: got %v expected %v", element, n)
+		}
+		q.Dequeue()
+	}
+}
+
+func TestString(t *testing.T) {
+	q := list_queue.New()
+	for n := 0; n < 3; n++ {
+		q.Enqueue(n)
+	}
+	q.Enqueue("last")
+
+	got := q.String()
+	expected := "size = 4 values = [0 1 2 last]"
+	if got != expected {
+		t.Errorf("String() error: expected\n%s\ngot\n%s\n", expected, got)
+	}
+}
